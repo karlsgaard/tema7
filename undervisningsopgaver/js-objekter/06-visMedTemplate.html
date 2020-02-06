@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vis dyr</title>
+    <style>
+        #alleDyr {
+            width: 20vw;
+            height: 20vw;
+            border: 4px solid grey;
+            margin: 2vw;
+            padding: 1vw;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="liste"> </section>
+
+    <template>
+        <article id="alleDyr">
+            <h3></h3>
+            <img src="" alt="">
+            <p id="p1">Type:</p>
+            <p id="p2">Levested:</p>
+
+        </article>
+    </template>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        let dyr = [{
+            "navn": "gris",
+            "type": "pattedyr",
+            "levested": "svinefarme",
+            "billede": "http://mabe-kea.dk/E19/pics/pig.png"
+
+        }, {
+            "navn": "frø",
+            "type": "amfibie",
+            "levested": "natur",
+            "billede": "http://mabe-kea.dk/E19/pics/frog.png"
+
+        }, {
+            "navn": "ræv",
+            "type": "pattedyr",
+            "levested": "skov",
+            "billede": "http://mabe-kea.dk/E19/pics/fox.png"
+
+        }, {
+            "navn": "sild",
+            "type": "fisk",
+            "levested": "havet",
+            "billede": "http://mabe-kea.dk/E19/pics/sild.jpg"
+
+        }, {
+            "navn": "krokodille",
+            "type": "krybdyr",
+            "levested": "havet",
+            "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg"
+
+        }];
+
+        function start() {
+
+            const listevisning = document.querySelector("#liste");
+            const alleDyrTemplate = document.querySelector("template");
+
+            dyr.forEach(dyr => {
+                let klon = alleDyrTemplate.cloneNode(true).content;
+                klon.querySelector("h3").textContent = dyr.navn;
+                klon.querySelector("img").src = dyr.billede;
+                klon.querySelector("#p1").textContent += dyr.type;
+                klon.querySelector("#p2").textContent += dyr.levested;
+                listevisning.appendChild(klon);
+
+            })
+        }
+    </script>
+</body></html>
