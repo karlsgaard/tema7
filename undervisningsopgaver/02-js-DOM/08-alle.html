@@ -11,7 +11,6 @@
             color: darkblue;
             line-height: 150%;
         }
-
     </style>
 
 </head>
@@ -30,9 +29,20 @@
 
 
     <script>
+        document.addEventListener("DOMContentLoaded", start);
 
+        function start() {
+            let pTags = document.querySelectorAll("p");
 
+            pTags.forEach(pTag => {
+
+                pTag.addEventListener("click", addClass);
+            })
+
+            function addClass() {
+                //                console.log(this);
+                this.classList.add("typo");
+            }
+        }
     </script>
-</body>
-
-</html>
+</body></html>
