@@ -13,7 +13,6 @@
             margin: 2vw;
             padding: 1vw;
         }
-
     </style>
 </head>
 
@@ -36,42 +35,23 @@
 
 
     <script>
+        let dyr = [];
+
         document.addEventListener("DOMContentLoaded", start);
 
-        let dyr = [{
-            "navn": "gris",
-            "type": "pattedyr",
-            "levested": "svinefarme",
-            "billede": "http://mabe-kea.dk/E19/pics/pig.png"
-
-        }, {
-            "navn": "frø",
-            "type": "amfibie",
-            "levested": "natur",
-            "billede": "http://mabe-kea.dk/E19/pics/frog.png"
-
-        }, {
-            "navn": "ræv",
-            "type": "pattedyr",
-            "levested": "skov",
-            "billede": "http://mabe-kea.dk/E19/pics/fox.png"
-
-        }, {
-            "navn": "sild",
-            "type": "fisk",
-            "levested": "havet",
-            "billede": "http://mabe-kea.dk/E19/pics/sild.jpg"
-
-        }, {
-            "navn": "krokodille",
-            "type": "krybdyr",
-            "levested": "havet",
-            "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg"
-
-        }];
-
         function start() {
+            hentData();
+        }
 
+        async function hentData() {
+            const jsonData = await fetch("alleDyr.json");
+            dyr = await jsonData.json();
+            console.log(dyr);
+            visDyr();
+        }
+
+
+        function visDyr() {
             const listevisning = document.querySelector("#liste");
             const alleDyrTemplate = document.querySelector("template");
 
@@ -83,10 +63,7 @@
                 klon.querySelector("#p2").textContent += dyr.levested;
                 listevisning.appendChild(klon);
 
-            })
+            });
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
