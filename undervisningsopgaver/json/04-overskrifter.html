@@ -37,6 +37,7 @@
         h1 {
             text-align: center;
         }
+
     </style>
 </head>
 <h1>Alle</h1>
@@ -44,7 +45,7 @@
     <button class="filter valgt" data-køn="alle">Alle</button>
     <button class="filter" data-køn="m">Mænd</button>
     <button class="filter" data-køn="k">Kvinder</button>
-    <button class="andet" data-køn="andet">Andet</button>
+    <button class="filter" data-køn="andet">Andet</button>
 </nav>
 
 <body>
@@ -128,7 +129,14 @@
             //            console.log("FILTER");
             filter = this.dataset.køn;
             document.querySelector("h1").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.classList.remove("valgt");
+            })
+            this.classList.add("valgt");
             visPersoner();
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
